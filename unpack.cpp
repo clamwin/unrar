@@ -86,6 +86,14 @@ void Unpack::Init(uint64 WinSize,bool Solid)
   if (WinSize<MinAllocSize)
     WinSize=MinAllocSize;
 
+#ifdef CLAMAV
+  // Unrar does not support window size greather than 1GB at this time.
+  // Any request for a window larger than 1GB should be ignored.
+  const size_t MaxAllocSize=0x40000000;
+  if (WinSize>MaxAllocSize)
+    WinSize=MaxAllocSize;
+#endif
+
   if (WinSize>Min(0x10000000000ULL,UNPACK_MAX_DICT)) // Window size must not exceed 1 TB.
     throw std::bad_alloc();
 

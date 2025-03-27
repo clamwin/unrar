@@ -659,11 +659,11 @@ bool CmdExtract::ExtractCurrentFile(Archive &Arc,size_t HeaderSize,bool &Repeat)
       CurConvertSymlinkPaths=false;
     }
 #endif
-
+#ifndef CLAMAV
     if (ExtrFile && Command!='P' && !Cmd->Test && !Cmd->AbsoluteLinks &&
         CurConvertSymlinkPaths)
       ExtrFile=LinksToDirs(DestFileName,Cmd->ExtrPath,LastCheckedSymlink);
-
+#endif
     File CurFile;
 
     bool LinkEntry=Arc.FileHead.RedirType!=FSREDIR_NONE;

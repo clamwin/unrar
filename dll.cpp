@@ -342,7 +342,11 @@ int PASCAL ProcessFile(HANDLE hArcData,int Operation,char *DestPath,char *DestNa
   {
     Data->Cmd.DllError=0;
     if (Data->OpenMode==RAR_OM_LIST || Data->OpenMode==RAR_OM_LIST_INCSPLIT ||
-        Operation==RAR_SKIP && !Data->Arc.Solid)
+        Operation==RAR_SKIP
+#ifndef CLAMAV
+         && !Data->Arc.Solid
+#endif
+        )
     {
       if (Data->Arc.Volume && Data->Arc.GetHeaderType()==HEAD_FILE &&
           Data->Arc.FileHead.SplitAfter)
