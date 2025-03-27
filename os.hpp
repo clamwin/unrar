@@ -37,8 +37,12 @@
 #define _UNICODE // Set _T() macro to convert from narrow to wide strings.
 #endif
 
+#ifndef WINVER
 #define WINVER _WIN32_WINNT_WINXP
+#endif
+#ifndef _WIN32_WINNT
 #define _WIN32_WINNT _WIN32_WINNT_WINXP
+#endif
 
 #if !defined(ZIPSFX)
 #define RAR_SMP
@@ -50,7 +54,7 @@
 #include <prsht.h>
 #include <shlwapi.h>
 #pragma comment(lib, "Shlwapi.lib")
-#include <PowrProf.h>
+#include <powrprof.h>
 #pragma comment(lib, "PowrProf.lib")
 #include <shellapi.h>
 #include <shlobj.h>
@@ -58,13 +62,13 @@
 #include <wincrypt.h>
 #include <wchar.h>
 #include <wctype.h>
-#include <Sddl.h>
+#include <sddl.h>
 #include <ntsecapi.h>
 
 
 // For WMI requests.
 #include <comdef.h>
-#include <Wbemidl.h>
+#include <wbemidl.h>
 #pragma comment(lib, "wbemuuid.lib")
 
 
