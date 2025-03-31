@@ -78,8 +78,8 @@
 #include <direct.h>
 #include <intrin.h>
 
-// Use SSE only for x86/x64, not ARM Windows.
-#if defined(_M_IX86) || defined(_M_X64)
+// Use SSE only for x64, not ARM Windows.
+#if defined(_M_X64)
   #define USE_SSE
   #define SSE_ALIGNMENT 16
 #endif
